@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  buildstage:
+    container_name: dev_build
+    build:
+        context: .
+        dockerfile: Dockerfile
+        target: build
+    env_file:
+        - docker-compose-release.env
+    volumes:
+        - ../volume/home/build:/home/build
+        - ../volume/app:/app
+
+  runtime:
+    container_name: dev_runtime
+    build:
+        context: .
+        dockerfile: Dockerfile
+        target: runtime
+    env_file:
+        - docker-compose-release.env
+    volumes:
+        - ../volume/home/build:/home/build:ro
+    ports:
+        - "8001:80"

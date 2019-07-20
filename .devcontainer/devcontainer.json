@@ -1,0 +1,30 @@
+// @see https://code.visualstudio.com/docs/remote/containers#_creating-a-devcontainerjson-file
+{
+    "name": "Dev dotnet core app",
+    "dockerComposeFile": [
+        "docker-compose.yml"
+    ],
+    "service": "dev",
+    "workspaceFolder": "/app",
+    "shutdownAction": "stopCompose",
+    "extensions": [
+        "ionide.ionide-fsharp",
+	"ms-vscode.csharp",
+    //    "ionide.ionide-fake",
+    //    "ionide.ionide-paket"
+    ],
+    // "postCreateCommand": [
+    //     "dotnet /root/.vscode-server/extensions/ionide.ionide-fsharp-4.0.1/bin_forge/Forge.dll new project -n console -t console --folder /app",
+    //     "dotnet /root/.vscode-server/extensions/ionide.ionide-fsharp-4.0.1/bin_forge/Forge.dll new project -n expecto -t suave --folder /app"
+    // ],
+    "settings": {
+        // "editor.fontLigatures": true,
+        // "editor.fontFamily": "Fira Code",
+        // "editor.fontSize": 14,
+        // "editor.tabSize": 4,
+        "files.insertFinalNewline": true,
+        "files.trimFinalNewlines": true,
+        "terminal.integrated.shell.linux": "/bin/bash",
+        "FSharp.fsacRuntime": "netcore",
+    },
+}

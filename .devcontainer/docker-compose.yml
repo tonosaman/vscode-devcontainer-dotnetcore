@@ -1,0 +1,27 @@
+version: "3.7"
+
+services:
+  dev:
+    container_name: dev_env
+    build:
+        context: .
+        dockerfile: Dockerfile
+        target: dev
+    volumes:
+      - ../volume/home/developer:/root
+      - ~/.gitconfig:/home/root/.gitconfig
+      - ../volume/home/build:/home/build
+      - ../volume/app:/app
+      # Uncomment the next line if you plan to install the Docker CLI. See the docker-in-docker-compose definition for details.
+      # - /var/run/docker.sock:/var/run/docker.sock
+    ports:
+      - "127.0.0.1:8000:80"
+
+    # Uncomment the next four lines if you will use a ptrace-based debugger like C++, Go, and Rust.
+    # cap_add:
+    #   - SYS_PTRACE
+    # security_opt:
+    #   - seccomp:unconfined
+
+    # Overrides default command so things don't shut down after the process ends.
+    command: sleep infinity
